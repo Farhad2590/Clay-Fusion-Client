@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+// import logo from "../assets/Logo.png"
+import logo from "../assets/Logo-preview.png"
 
 const Navbar = () => {
     const Navs = <>
@@ -16,13 +18,16 @@ const Navbar = () => {
                         {Navs}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <div className="flex items-center">
+                    <img src={logo} alt="" className="w-12" />
+                    <h1 className="text-3xl text-[#a86a60]">CLAY FUSION</h1>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 {Navs}
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <a className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Log in</a>
             </div>
         </div>
     );
