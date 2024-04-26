@@ -3,6 +3,7 @@ import bg from "../assets/Animated Shape.svg"
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AUthContext } from "../Autprovider/Authprovider";
+import SocialLogin from "../Components/SocialLogin";
 
 const Login = () => {
     const { signInUser } = useContext(AUthContext)
@@ -52,9 +53,10 @@ const Login = () => {
                                 <button className='btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]'>Sign In</button>
                             </div>
                         </form>
-                        <div className="flex items-center">
+                        <div className="flex flex-col items-center">
 
                             <p className="px-3 text-[#a86a60] text-lg ">Login with social accounts</p>
+                            <SocialLogin></SocialLogin>
 
                         </div>
 

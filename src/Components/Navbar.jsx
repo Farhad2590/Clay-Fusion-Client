@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 // import logo from "../assets/Logo.png"
 import logo from "../assets/Logo-preview.png"
+import { useContext } from "react";
+import { AUthContext } from "../Autprovider/Authprovider";
 
 const Navbar = () => {
+    const { logout, user } = useContext(AUthContext)
     const Navs = <>
         <Link to="/"><a>Home</a></Link>
         <Link to="/addCard"><a>Add to Cart</a></Link>
@@ -26,9 +29,35 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 {Navs}
             </div>
-            <Link to="/login" className="navbar-end">
+            <div className="navbar-end">
+                {
+                    user?.email ? <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar" title={user.displayName}>
+                            <div className="w-10 rounded-full text-black">
+                                <img src={user.photoURL} alt={user.displayName} />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
+                            <li>
+                                <button className="btn btn-sm  btn-ghost">{user.displayName }</button>
+                            </li>
+                            <li>
+                                <button className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]"
+                                    onClick={logout}
+                                >Logout</button>
+
+                            </li>
+                        </ul>
+                    </div>
+                        :
+                        <Link to='/login'>
+                            <button className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Login</button>
+                        </Link>
+                }
+            </div>
+            {/* <Link to="/login" className="navbar-end">
                 <a className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Log in</a>
-            </Link>
+            </Link> */}
         </div>
     );
 };
