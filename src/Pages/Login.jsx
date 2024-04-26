@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
 import bg from "../assets/Animated Shape.svg"
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AUthContext } from "../Autprovider/Authprovider";
 import SocialLogin from "../Components/SocialLogin";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+
+
+import Swal from 'sweetalert2'
+
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false)
     const { signInUser } = useContext(AUthContext)
     const backgroundStyle = {
         backgroundImage: `url(${bg})`,
@@ -19,6 +27,17 @@ const Login = () => {
     } = useForm()
     const onSubmit = (data) => {
         const { email, password } = data;
+        if (password.length < 6) {
+            toast('Password should be 6 character or more')
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast('Password should have at lease one Uppercase letter')
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast('Password should have at lease one Uppercase letter')
+            return;
+        }
         signInUser(email, password)
             .then(result => {
                 console.log(result);
@@ -43,10 +62,12 @@ const Login = () => {
                             </div>
                             <div className="text-lg relative">
                                 <label htmlFor="password" className="block text-[#a86a60]">Password</label>
-                                <input name="password" id="password" placeholder="Password" className="text-black w-full px-4 py-3 rounded-md "
+                                <input type={showPassword ? "text" : "password"}type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" className="text-black w-full px-4 py-3 rounded-md "
                                     {...register("password", { required: true })} />
                                 {errors.password && <span className='text-red-600 font-bold'>!!!Password is required!!!</span>}
-
+                                <span className="absolute top-11 right-3" onClick={() => setShowPassword(!showPassword)}>
+                                    {showPassword ? <FaRegEyeSlash className="text-[#a86a60]" /> : <FaEye className="text-[#a86a60]" />}
+                                </span>
                             </div>
 
                             <div className='text-center'>
@@ -67,6 +88,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
