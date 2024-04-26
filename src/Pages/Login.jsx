@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import bg from "../assets/Animated Shape.svg"
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AUthContext } from "../Autprovider/Authprovider";
 
 const Login = () => {
-
+    const { signInUser } = useContext(AUthContext)
     const backgroundStyle = {
         backgroundImage: `url(${bg})`,
         backgroundRepeat: 'no-repeat',
@@ -14,13 +16,19 @@ const Login = () => {
         handleSubmit,
         formState: { errors },
     } = useForm()
-    const onSubmit = () =>{
-
+    const onSubmit = (data) => {
+        const { email, password } = data;
+        signInUser(email, password)
+            .then(result => {
+                console.log(result);
+            }).catch(error => {
+                console.error(error);
+            })
     }
     return (
-        <div  className="min-h-screen" style={backgroundStyle}>
+        <div className="min-h-screen" style={backgroundStyle}>
             <div className="hero-overlay bg-opacity-60"></div>
-           
+
             <div className="hero-content  text-neutral-content">
                 <div className="max-w-m mt-16 bg-[#a86a60] bg-opacity-20 backdrop-blur-base rounded-lg">
                     <div className="w-full max-w-md p-8 space-y-3 rounded-x">
@@ -34,10 +42,10 @@ const Login = () => {
                             </div>
                             <div className="text-lg relative">
                                 <label htmlFor="password" className="block text-[#a86a60]">Password</label>
-                                <input  name="password" id="password" placeholder="Password" className="text-black w-full px-4 py-3 rounded-md "
+                                <input name="password" id="password" placeholder="Password" className="text-black w-full px-4 py-3 rounded-md "
                                     {...register("password", { required: true })} />
                                 {errors.password && <span className='text-red-600 font-bold'>!!!Password is required!!!</span>}
-                                
+
                             </div>
 
                             <div className='text-center'>
@@ -49,10 +57,10 @@ const Login = () => {
                             <p className="px-3 text-[#a86a60] text-lg ">Login with social accounts</p>
 
                         </div>
-                        
+
                         <div className='flex justify-center gap-2'>
                             <p className="text-lg text-center text-[#a86a60]"> Dont have an account?</p>
-                            <Link to="/register"><a className="underline text-[#a86a60]">  Sign In</a></Link>
+                            <Link to="/register"><a className="underline text-[#a86a60]">  Sign Up</a></Link>
                         </div>
                     </div>
                 </div>

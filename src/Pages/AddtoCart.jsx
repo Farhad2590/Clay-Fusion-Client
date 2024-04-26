@@ -19,8 +19,9 @@ const AddtoCart = () => {
             <div className="hero-overlay bg-opacity-60"></div>
 
             <div className="p-6  text-neutral-content">
-                <h1 className="text-4xl font-bold text-center text-[#a86a60]">Add to Card</h1>
+
                 <div className=" bg-[#a86a60] bg-opacity-20 backdrop-blur-base rounded-lg">
+                    <h1 className="text-4xl pt-16 font-bold text-center text-[#a86a60]">Add to Card</h1>
                     <div className="w-full  p-8 space-y-3 rounded-x">
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                             <div className="flex gap-5 w-full">
@@ -84,7 +85,7 @@ const AddtoCart = () => {
                                 <button className='w-full btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]'>Sign In</button>
                             </div>
                         </form>
-                       
+
 
                     </div>
                 </div>

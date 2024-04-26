@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import bg from "../assets/Animated Shape.svg"
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AUthContext } from "../Autprovider/Authprovider";
 
 const Register = () => {
+    const{createUser} = useContext(AUthContext)
     const backgroundStyle = {
         backgroundImage: `url(${bg})`,
         backgroundRepeat: 'no-repeat',
@@ -13,8 +16,14 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm()
-    const onSubmit = () =>{
-
+    const onSubmit = (data) =>{
+        const{email,password} = data;
+        createUser(email, password)
+            .then(result => {
+               console.log(result);
+            }).catch(error =>{
+                console.error(error);
+            })
     }
     return (
         <div  className="min-h-screen" style={backgroundStyle}>
