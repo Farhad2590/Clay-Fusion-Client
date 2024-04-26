@@ -4,8 +4,8 @@ import {Outlet} from "react-router-dom"
 
 const Root = () => {
     return (
-        <div className="bg-orange-100 ">
-            <div className="mx-auto w-[95%]">
+        <div >
+            <div >
                 <Navbar></Navbar>
                 <Outlet></Outlet>
             </div>

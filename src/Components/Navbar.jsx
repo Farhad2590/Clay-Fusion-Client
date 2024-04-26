@@ -26,9 +26,9 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 {Navs}
             </div>
-            <div className="navbar-end">
+            <Link to="/login" className="navbar-end">
                 <a className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Log in</a>
-            </div>
+            </Link>
         </div>
     );
 };
