@@ -4,8 +4,8 @@ import logo from "../assets/Logo-preview.png"
 
 const Navbar = () => {
     const Navs = <>
-        <Link><a>Home</a></Link>
-        <Link><a>Add to Cart</a></Link>
+        <Link to="/"><a>Home</a></Link>
+        <Link to="/addCard"><a>Add to Cart</a></Link>
     </>
     return (
         <div className="navbar ">

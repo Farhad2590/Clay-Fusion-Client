@@ -12,6 +12,7 @@ import Error from './Pages/Error';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import AddtoCart from './Pages/AddtoCart'
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/addCard",
+        element: <AddtoCart></AddtoCart>
       }
     ]
   },
