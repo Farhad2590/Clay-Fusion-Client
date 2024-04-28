@@ -21,7 +21,7 @@ const MyCard = () => {
             <div className="mx-auto w-[96%] pb-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {
-                        item.map(items => <Mydata items={items} key={items._id}></Mydata>)
+                        item.map(items => <Mydata setItem={setItem} item={item} items={items} key={items._id}></Mydata>)
                     }
                 </div>
             </div>

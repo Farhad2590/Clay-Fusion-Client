@@ -10,6 +10,7 @@ const Navbar = () => {
     <>
         <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Home</NavLink>
         <NavLink to={'/addCard'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Add Product</NavLink>
+        <NavLink to={'/allProducts'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>All Products</NavLink>
         <NavLink to={'/myCard'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>My Product</NavLink>
     </>
     )

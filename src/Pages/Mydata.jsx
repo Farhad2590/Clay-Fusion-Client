@@ -2,16 +2,12 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 
-const Mydata = ({ items }) => {
+const Mydata = ({ items, setItem, item }) => {
     console.log(items);
     const { _id, image, item_name, subcategory_name, description, price, rating, customization, processing_time, stock_status } = items
 
-    // const handleUpdate = (_id) => {
-    //     console.log(_id);
-    // }
-
     const handleDelete = (_id) => {
-        console.log(_id);
+        // console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -35,7 +31,7 @@ const Mydata = ({ items }) => {
                                 text: "Your Product has been deleted.",
                                 icon: "success"
                             });
-
+                            setItem(item.filter(p => p._id !== _id));
                         }
                     })
             }
@@ -58,7 +54,7 @@ const Mydata = ({ items }) => {
                     </div>
                 </div>
                 <div className="flex w-full gap-5 pr-5">
-                    <Link to={`/updateProducts/${_id}`} type="button"  className="w-[50%] btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Update</Link>
+                    <Link to={`/updateProducts/${_id}`} type="button" className="w-[50%] btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Update</Link>
                     <button type="button" onClick={() => handleDelete(_id)} className="w-[50%] btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Delete</button>
                 </div>
             </div>

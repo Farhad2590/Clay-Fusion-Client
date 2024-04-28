@@ -17,6 +17,7 @@ import Authprovider from './Autprovider/Authprovider';
 import MyCard from './Pages/MyCard';
 import CardDetails from './Pages/CardDetails';
 import UpdatedProducts from './Pages/UpdatedProducts';
+import Products from './Pages/Products';
 
 
 const router = createBrowserRouter([
@@ -52,8 +53,9 @@ const router = createBrowserRouter([
         element: <CardDetails></CardDetails>,
       },
       {
-        path: "/myCard",
-        element: <MyCard></MyCard>
+        path: "/allProducts",
+        element: <Products></Products>,
+        loader: () => fetch('http://localhost:5000/products')
       },
       {
         path: "/updateProducts/:id",
