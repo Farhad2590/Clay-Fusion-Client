@@ -14,6 +14,9 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import AddtoCart from './Pages/AddtoCart'
 import Authprovider from './Autprovider/Authprovider';
+import MyCard from './Pages/MyCard';
+import CardDetails from './Pages/CardDetails';
+import UpdatedProducts from './Pages/UpdatedProducts';
 
 
 const router = createBrowserRouter([
@@ -25,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('/data.json')
+        loader: () => fetch('http://localhost:5000/products')
       },
       {
         path: "/login",
@@ -38,15 +41,33 @@ const router = createBrowserRouter([
       {
         path: "/addCard",
         element: <AddtoCart></AddtoCart>
-      }
+      },
+      {
+        path: "/myCard",
+        element: <MyCard></MyCard>
+      },
+      {
+        path: "/cardsdata/:id",
+        loader: () => fetch('http://localhost:5000/products'),
+        element: <CardDetails></CardDetails>,
+      },
+      {
+        path: "/myCard",
+        element: <MyCard></MyCard>
+      },
+      {
+        path: "/updateProducts/:id",
+        element: <UpdatedProducts></UpdatedProducts>,
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+      },
     ]
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <Authprovider>
-   <RouterProvider router={router} />
-   </Authprovider>
+    <Authprovider>
+      <RouterProvider router={router} />
+    </Authprovider>
   </React.StrictMode>,
 )

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 // import logo from "../assets/Logo.png"
 import logo from "../assets/Logo-preview.png"
 import { useContext } from "react";
@@ -6,10 +6,17 @@ import { AUthContext } from "../Autprovider/Authprovider";
 
 const Navbar = () => {
     const { logout, user } = useContext(AUthContext)
-    const Navs = <>
-        <Link to="/"><a>Home</a></Link>
-        <Link to="/addCard"><a>Add to Cart</a></Link>
+    const Navs = user ? (
+    <>
+        <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Home</NavLink>
+        <NavLink to={'/addCard'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Add Product</NavLink>
+        <NavLink to={'/myCard'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>My Product</NavLink>
     </>
+    )
+        :
+        (<>
+        <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Home</NavLink>
+        </>)
     return (
         <div className="navbar ">
             <div className="navbar-start">
@@ -26,7 +33,7 @@ const Navbar = () => {
                     <h1 className="text-3xl text-[#a86a60]">CLAY FUSION</h1>
                 </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center gap-2 hidden lg:flex">
                 {Navs}
             </div>
             <div className="navbar-end">
@@ -39,7 +46,7 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <button className="btn btn-sm  btn-ghost">{user.displayName }</button>
+                                <button className="btn btn-sm  btn-ghost">{user.displayName}</button>
                             </li>
                             <li>
                                 <button className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]"

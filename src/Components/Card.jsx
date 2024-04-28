@@ -10,7 +10,7 @@ const Card = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
-                    loaderData.map(data => <Cards key={data.id} data={data}></Cards>)
+                    loaderData.slice(0, 6).map(data => <Cards key={data._id} data={data}></Cards>)
                 }
             </div>
         </div>
