@@ -18,6 +18,7 @@ import MyCard from './Pages/MyCard';
 import CardDetails from './Pages/CardDetails';
 import UpdatedProducts from './Pages/UpdatedProducts';
 import Products from './Pages/Products';
+import PrivateRoute from './Components/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -50,7 +51,9 @@ const router = createBrowserRouter([
       {
         path: "/cardsdata/:id",
         loader: () => fetch('http://localhost:5000/products'),
-        element: <CardDetails></CardDetails>,
+        element: <PrivateRoute>
+          <CardDetails></CardDetails>
+        </PrivateRoute>,
       },
       {
         path: "/allProducts",

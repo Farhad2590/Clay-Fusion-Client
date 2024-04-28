@@ -38,10 +38,6 @@ const UpdatedProducts = () => {
         }
 
         console.log(updateUserData);
-
-        // const updateCoffee = {name,quantity,supplier,taste,category,details,photo_url}
-
-        // console.log(updateCoffee);
         fetch(`http://localhost:5000/products/${_id}`,{
             method:'PUT',
             headers:{

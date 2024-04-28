@@ -12,15 +12,12 @@ const Cards = ({ data }) => {
                     <h2 className="text-2xl text-[#a86a60] font-semibold tracking-wide">{item_name}</h2>
                     <p className="">{description}</p>
                 </div>
-                <Link to={`/cardsdata/${_id}`} type="button" className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Read more</Link>
+                <Link to={`/cardsdata/${_id}`} type="button" className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">View Details</Link>
             </div>
         </div>
     );
 };
 
 export default Cards;
-{/* <Link to={`/cardsdata/${id}`} className="flex items-center">
-                            <p className="text-white">View Details</p>
-                            <FaArrowRight className="text-white" />
-                        </Link> */}
+
 

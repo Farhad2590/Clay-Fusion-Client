@@ -55,11 +55,12 @@ const Authprovider = ({ children }) => {
     const allValues = {
         createUser,
         signInUser,
-        loader,
-        user,
+        
         logout,
         githubSignin,
-        googleSignin
+        googleSignin,
+        loader,
+        user,
     }
     return (
 
