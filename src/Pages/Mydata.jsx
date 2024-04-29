@@ -39,7 +39,9 @@ const Mydata = ({ items, setItem, item }) => {
 
     }
     return (
-        <div className="max-w-xs rounded-md shadow-md bg-white" >
+
+
+        <div className="max-h-xs rounded-md shadow-md bg-white" >
             <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72 " />
             <div className="flex flex-col justify-between p-6 space-y-8 " >
                 <div className="space-y-2">
@@ -59,7 +61,53 @@ const Mydata = ({ items, setItem, item }) => {
                 </div>
             </div>
         </div>
+
     );
 };
 
 export default Mydata;
+
+
+
+// import { useContext, useEffect, useState } from "react";
+// import { AUthContext } from "../Autprovider/Authprovider";
+// import Mydata from "./Mydata";
+
+// const MyCard = () => {
+//     const { user } = useContext(AUthContext)
+//     const [item, setItem] = useState([])
+//     // console.log(user);
+//     useEffect(() => {
+//         fetch(`http://localhost:5000/myProduct/${user?.email}`)
+//             .then(res => res.json())
+//             .then(data => {
+//                 console.log(data);
+//                 setItem(data)
+//             })
+//     }, [user])
+
+//     return (
+//         <div className="bg-orange-100">
+//             <h1 className="text-3xl text-center text-[#a86a60] py-5">My Products</h1>
+//             <form>
+//                 <div className=" text-lg">
+//                     <label htmlFor="customization" className="block text-[#a86a60]">Customization</label>
+//                     <select name="customization" id="customization" className=" text-black px-4 py-3 rounded-md" required>
+//                         <option value="Clay-made pottery">All</option>
+//                         <option value="Stoneware">Yes</option>
+//                         <option value="Porcelain">No</option>
+//                     </select>
+//                 </div>
+//             </form>
+//             <div className="mx-auto w-[96%] pb-5">
+//                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+//                     {
+//                         item.map(items => <Mydata setItem={setItem} item={item} items={items} key={items._id}></Mydata>)
+//                     }
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default MyCard;

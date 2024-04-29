@@ -8,8 +8,7 @@ const Products = () => {
         <div className="bg-orange-100">
             <h1 className="text-3xl text-center text-[#a86a60] py-5">All Products</h1>
             <div className="overflow-x-auto">
-                <table className="table w-full md:max-w-screen-lg mx-auto">
-
+                <table className="table w-full mx-auto">
                     <thead>
                         <tr>
                             <th className="hidden md:table-cell">Sl No.</th>

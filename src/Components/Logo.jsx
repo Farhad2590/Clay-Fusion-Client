@@ -11,17 +11,36 @@ import logo8 from "../assets/logo8.png"
 
 const Logo = () => {
     return (
-        <div className="my-10">
-            <h1 className="text-3xl text-center font-semibold text-[#a86a60]">Our Corporate Clients</h1>
-            <Marquee className="p-5 flex flex-col gap-5">
-                <img className="mr-10" src={logo1} alt="" />
-                <img className="w-16 " src={logo2} alt="" />
-                <img className="" src={logo3} alt="" />
-                <img className="" src={logo4} alt="" />
-                <img className="" src={logo5} alt="" />
-                <img className="" src={logo6} alt="" />
-                <img className="" src={logo7} alt="" />
-                <img className="" src={logo8} alt="" />
+        <div className="mx-auto w-[96%] pt-10 ">
+            <div className="text-center p-2 border mb-10 border-[#a86a60]">
+                <h1 className="text-3xl text-center font-semibold text-[#a86a60]">Our Corporate Clients</h1>
+            </div>
+
+            <Marquee className=" flex flex-col ">
+            <div className=" rounded-full p-1 border border-[#a86a60] mr-10">
+                    <img className="" src={logo3} alt="" />
+                </div>
+
+                <div className="rounded-full p-1 border border-[#a86a60] mr-10">
+                    <img className="" src={logo4} alt="" />
+                </div>
+
+                <div className="rounded-full p-1 border border-[#a86a60] mr-10">
+                    <img className="" src={logo5} alt="" />
+                </div>
+
+                <div className="rounded-full p-1 border border-[#a86a60] mr-10">
+                    <img className="" src={logo6} alt="" />
+                </div>
+
+                <div className="rounded-full p-1 border border-[#a86a60] mr-10">
+                    <img className="" src={logo7} alt="" />
+                </div>
+ 
+                <div className="rounded-full p-1 border border-[#a86a60] mr-10">
+                    <img className="" src={logo8} alt="" />
+                </div>
+
             </Marquee>
         </div>
     );

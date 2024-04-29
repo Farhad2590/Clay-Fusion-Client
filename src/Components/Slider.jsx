@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
+import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
 
 const Slider = () => {
     return (
@@ -10,12 +10,16 @@ const Slider = () => {
             slidesPerView={1}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
-            modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+            modules={[Navigation, Autoplay, Pagination, Mousewheel, Keyboard]}
             navigation={true}
             pagination={true}
             mousewheel={true}
             keyboard={true}
             cssMode={true}
+            autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+            }}
         >
             <SwiperSlide className="relative">
                 <div>
@@ -39,28 +43,6 @@ const Slider = () => {
                     </div>
                 </div>
             </SwiperSlide>
-            {/* <SwiperSlide className="relative">
-                <div>
-                    <img className="w-full rounded-lg" src="https://i.ibb.co/dt4zXKm/banner3.jpg" />
-                </div>
-                <div className=" absolute inset-0 flex flex-col justify-center items-center text-center bg-black bg-opacity-20 rounded-lg">
-                   
-                    <div className="flex lg:w-[650px] text-center">
-                        
-                    </div>
-                </div>
-            </SwiperSlide>
-            <SwiperSlide className="relative">
-                <div>
-                    <img className="w-full rounded-lg" src="https://i.ibb.co/PjHScDX/banner4.jpg" />
-                </div>
-                <div className=" absolute inset-0 flex flex-col justify-center items-center text-center bg-black bg-opacity-20 rounded-lg">
-                    
-                    <div className="flex lg:w-[650px] text-center">
-                        
-                    </div>
-                </div>
-            </SwiperSlide> */}
             <SwiperSlide className="relative">
                 <div>
                     <img className="w-full rounded-lg" src="https://i.ibb.co/19XY7Wm/banner5.jpg" />
@@ -72,17 +54,7 @@ const Slider = () => {
                     </div>
                 </div>
             </SwiperSlide>
-            {/* <SwiperSlide className="relative">
-                <div>
-                    <img className="w-full rounded-lg" src="https://i.ibb.co/ftpS3jk/banner7.jpg" />
-                </div>
-                <div className=" absolute inset-0 flex flex-col justify-center items-center text-center bg-black bg-opacity-20 rounded-lg">
-                    
-                    <div className="flex lg:w-[650px] text-center">
-                        
-                    </div>
-                </div>
-            </SwiperSlide> */}
+
             <SwiperSlide className="relative">
                 <div>
                     <img className="w-full rounded-lg" src="https://i.ibb.co/sJHCQt8/banner10.jpg" />

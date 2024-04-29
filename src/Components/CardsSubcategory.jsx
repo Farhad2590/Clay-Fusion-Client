@@ -9,7 +9,8 @@ const CardsSubcategory = () => {
     const subcategory_info = useLoaderData()
     // console.log(subcategory_info);
 
-    const cardDetails = subcategory_info.filter(card => card.subcategory_name === subcategory_name); console.log(cardDetails);
+    const cardDetails = subcategory_info.filter(card => card.subcategory_name === subcategory_name); 
+
     console.log(cardDetails);
 
     return (

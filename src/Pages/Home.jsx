@@ -9,14 +9,11 @@ import ProductSubcategories from "../Components/ProductSubcategories";
 const Home = () => {
     return (
         <div className="bg-orange-100">
-            <div className="mx-auto w-[96%] pb-5">
-                <Slider></Slider>
-                <Card></Card>
-                <ProductSubcategories></ProductSubcategories>
-                <Logo></Logo>
-                <OurShops></OurShops>
-               
-            </div>
+            <Slider></Slider>
+            <Card></Card>
+            <ProductSubcategories></ProductSubcategories>
+            <Logo></Logo>
+            <OurShops></OurShops>
         </div>
     );
 };

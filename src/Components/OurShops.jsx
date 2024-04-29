@@ -5,10 +5,13 @@ import shop from '../assets/market.png'
 
 const OurShops = () => {
     return (
-        <div>
-            <h1 className="text-3xl text-center font-semibold text-[#a86a60]">Our Shop Locations</h1>
-            <div className='flex w-full gap-5'>
-                <div className='relative w-[40%]'>
+        <div className="mx-auto w-[96%]">
+            <div className="text-center my-10 border border-[#a86a60] p-2">
+                <h1 className="text-3xl text-center font-semibold text-[#a86a60]">Our Shop Locations</h1>
+            </div>
+
+            <div className='flex flex-col lg:flex-row w-full gap-5 pb-10 text-[rgb(168,106,96)]'>
+                <div className='relative lg:w-[40%]'>
                     <img src={shop} alt="" className="w-full h-full" />
                     <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black bg-opacity-50 text-white">
                         <h1 className="text-3xl font-bold">Wellcome to Clay-Fusion</h1>
@@ -16,7 +19,7 @@ const OurShops = () => {
                     </div>
                 </div>
 
-                <div className="w-[60%] join join-vertical">
+                <div className="lg:w-[60%] join join-vertical">
                     <div className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" defaultChecked />
                         <div className="collapse-title text-xl font-medium">

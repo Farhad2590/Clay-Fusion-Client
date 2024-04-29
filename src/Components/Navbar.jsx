@@ -3,20 +3,21 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/Logo-preview.png"
 import { useContext } from "react";
 import { AUthContext } from "../Autprovider/Authprovider";
+import Toogle from "./Toogle";
 
 const Navbar = () => {
     const { logout, user } = useContext(AUthContext)
     const Navs = user ? (
-    <>
-        <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Home</NavLink>
-        <NavLink to={'/addCard'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Add Product</NavLink>
-        <NavLink to={'/allProducts'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>All Products</NavLink>
-        <NavLink to={'/myCard'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>My Product</NavLink>
-    </>
+        <>
+            <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Home</NavLink>
+            <NavLink to={'/addCard'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Add Product</NavLink>
+            <NavLink to={'/allProducts'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>All Products</NavLink>
+            <NavLink to={'/myCard'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none ' : 'btn btn-outline-none bg-none text-[#a86a60]'}>My Product</NavLink>
+        </>
     )
         :
         (<>
-        <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Home</NavLink>
+            <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-outline border border-[#a86a60] text-[#a86a60] hover:bg-[#a86a60] hover:outline-none' : 'btn btn-outline-none bg-none text-[#a86a60]'}>Home</NavLink>
         </>)
     return (
         <div className="navbar ">
@@ -38,6 +39,7 @@ const Navbar = () => {
                 {Navs}
             </div>
             <div className="navbar-end">
+                <Toogle></Toogle>
                 {
                     user?.email ? <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar" title={user.displayName}>
@@ -45,6 +47,7 @@ const Navbar = () => {
                                 <img src={user.photoURL} alt={user.displayName} />
                             </div>
                         </label>
+
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
                                 <button className="btn btn-sm  btn-ghost">{user.displayName}</button>
@@ -53,7 +56,6 @@ const Navbar = () => {
                                 <button className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]"
                                     onClick={logout}
                                 >Logout</button>
-
                             </li>
                         </ul>
                     </div>
@@ -62,6 +64,7 @@ const Navbar = () => {
                             <button className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Login</button>
                         </Link>
                 }
+
             </div>
             {/* <Link to="/login" className="navbar-end">
                 <a className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Log in</a>
