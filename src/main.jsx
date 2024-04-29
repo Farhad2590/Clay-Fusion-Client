@@ -19,6 +19,7 @@ import CardDetails from './Pages/CardDetails';
 import UpdatedProducts from './Pages/UpdatedProducts';
 import Products from './Pages/Products';
 import PrivateRoute from './Components/PrivateRoute';
+import CardsSubcategory from './Components/CardsSubcategory';
 
 
 const router = createBrowserRouter([
@@ -64,6 +65,13 @@ const router = createBrowserRouter([
         path: "/updateProducts/:id",
         element: <UpdatedProducts></UpdatedProducts>,
         loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+      },
+      {
+        path: "/subCategorydata/:subcategory_name",
+        loader: () => fetch('http://localhost:5000/products'),
+        element: <PrivateRoute>
+          <CardsSubcategory></CardsSubcategory>
+        </PrivateRoute>,
       },
     ]
   },
