@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg from "../assets/Animated Shape.svg"
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
@@ -6,10 +6,17 @@ import { AUthContext } from "../Autprovider/Authprovider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Register = () => {
-    const{createUser} = useContext(AUthContext)
+    const { createUser } = useContext(AUthContext)
     const [showPassword, setShowPassword] = useState(false)
+
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location?.state || '/'
+
     const backgroundStyle = {
         backgroundImage: `url(${bg})`,
         backgroundRepeat: 'no-repeat',
@@ -20,8 +27,8 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm()
-    const onSubmit = (data) =>{
-        const{email,password} = data;
+    const onSubmit = (data) => {
+        const { email, password } = data;
         if (password.length < 6) {
             toast('Password should be 6 character or more')
         }
@@ -35,21 +42,36 @@ const Register = () => {
         }
         createUser(email, password)
             .then(result => {
-               console.log(result);
-            }).catch(error =>{
+                console.log(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Log in successful',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                if (result.user) {
+                    navigate(from)
+                }
+            }).catch(error => {
                 console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Log in failed',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             })
     }
     return (
-        <div  className="min-h-screen" style={backgroundStyle}>
+        <div className="min-h-screen" style={backgroundStyle}>
             <div className="hero-overlay bg-opacity-60"></div>
-           
+
             <div className="hero-content  text-neutral-content">
                 <div className="max-w-m  bg-[#a86a60] bg-opacity-20 backdrop-blur-base rounded-lg">
                     <div className="w-full max-w-md p-8 space-y-3 rounded-x">
                         <h1 className="text-4xl font-bold text-center text-[#a86a60]">Sign Up</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                        <div className="text-lg">
+                            <div className="text-lg">
                                 <label htmlFor="username" className="block text-[#a86a60]">Username</label>
                                 <input type="text" name="username" id="username" placeholder="Username" className="w-full text-black px-4 py-3 rounded-md"
                                     {...register("username", { required: true })} />
@@ -84,7 +106,7 @@ const Register = () => {
                             <p className="px-3 text-[#a86a60] text-lg ">Login with social accounts</p>
 
                         </div>
-                        
+
                         <div className='flex justify-center gap-2'>
                             <p className="text-lg text-center text-[#a86a60]"> Dont have an account?</p>
                             <Link to="/login"><a className="underline text-[#a86a60]">  Sign In</a></Link>

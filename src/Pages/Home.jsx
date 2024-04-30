@@ -4,6 +4,9 @@ import Logo from "../Components/Logo";
 import OurShops from "../Components/OurShops";
 // import UpdatedProducts from "./UpdatedProducts";
 import ProductSubcategories from "../Components/ProductSubcategories";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
 
 
 const Home = () => {
@@ -14,6 +17,7 @@ const Home = () => {
             <ProductSubcategories></ProductSubcategories>
             <Logo></Logo>
             <OurShops></OurShops>
+            <ToastContainer/>
         </div>
     );
 };

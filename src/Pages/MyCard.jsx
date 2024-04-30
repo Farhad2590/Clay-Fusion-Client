@@ -6,13 +6,29 @@ import Swal from 'sweetalert2';
 const MyCard = () => {
     const { user } = useContext(AUthContext);
     const [items, setItems] = useState([]);
+    const [displayItems, setDisplayItems] = useState([]);
+
+    const handleCategoriesFilter = filter => {
+        if (filter === 'all') {
+            setDisplayItems(items)
+        }
+        else if (filter === 'yes') {
+            const yes = items.filter(item => item.customization === 'yes')
+            setDisplayItems(yes)
+        }
+        else if (filter === 'no') {
+            const no = items.filter(item => item.customization === 'no')
+            setDisplayItems(no)
+        }
+    }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myProduct/${user?.email}`)
+        fetch(`https://b9a10-server-side-farhad2590.vercel.app/myProduct/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setItems(data);
+                setDisplayItems(data)
             });
     }, [user]);
 
@@ -27,7 +43,7 @@ const MyCard = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/products/${_id}`, {
+                fetch(`https://b9a10-server-side-farhad2590.vercel.app/products/${_id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -46,21 +62,26 @@ const MyCard = () => {
         });
     };
 
+
+
     return (
         <div className="bg-orange-100">
             <h1 className="text-3xl text-center text-[#a86a60] py-5">My Products</h1>
             <div className="border border-dashed border-[#a86a60] mb-5"></div>
             <div className=" text-lg text-center mb-5">
-                <select name="customization" id="customization" className=" text-black px-4 py-3 rounded-md" required>
-                    <option value="Clay-made pottery">All</option>
-                    <option value="Stoneware">Yes</option>
-                    <option value="Porcelain">No</option>
-                </select>
+                <details className="dropdown">
+                    <summary className="m-1 btn">Categories</summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                        <li onClick={() => handleCategoriesFilter('all')}><a>All</a></li>
+                        <li onClick={() => handleCategoriesFilter('yes')}><a>Yes</a></li>
+                        <li onClick={() => handleCategoriesFilter('no')}><a>No</a></li>
+                    </ul>
+                </details>
             </div>
 
             <div className="mx-auto w-[96%] pb-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {items.map(item => (
+                    {displayItems.map(item => (
                         <div key={item._id} className="max-h-xs rounded-md shadow-md bg-white" >
                             <img src={item.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 " />
                             <div className="flex flex-col justify-between p-6 space-y-8 " >

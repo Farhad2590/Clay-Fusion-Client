@@ -5,7 +5,7 @@ const ProductSubcategories = () => {
     const [subcategories, setSubcategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/subCategories')
+        fetch('https://b9a10-server-side-farhad2590.vercel.app/subCategories')
             .then(res => res.json())
             .then(data => {
                 setSubcategories(data);

@@ -38,7 +38,7 @@ const UpdatedProducts = () => {
         }
 
         console.log(updateUserData);
-        fetch(`http://localhost:5000/products/${_id}`,{
+        fetch(`https://b9a10-server-side-farhad2590.vercel.app/products/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

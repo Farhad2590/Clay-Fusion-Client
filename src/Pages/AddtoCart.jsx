@@ -38,7 +38,7 @@ const AddtoCart = () => {
             processing_time
         }
         console.log(newProduct);
-        fetch('http://localhost:5000/products', {
+        fetch('https://b9a10-server-side-farhad2590.vercel.app/products', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

@@ -19,7 +19,7 @@ const Mydata = ({ items, setItem, item }) => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/products/${_id}`, {
+                fetch(`https://b9a10-server-side-farhad2590.vercel.app/products/${_id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -78,7 +78,7 @@ export default Mydata;
 //     const [item, setItem] = useState([])
 //     // console.log(user);
 //     useEffect(() => {
-//         fetch(`http://localhost:5000/myProduct/${user?.email}`)
+//         fetch(`https://b9a10-server-side-farhad2590.vercel.app//myProduct/${user?.email}`)
 //             .then(res => res.json())
 //             .then(data => {
 //                 console.log(data);

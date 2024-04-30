@@ -38,7 +38,7 @@ const Navbar = () => {
             <div className="navbar-center gap-2 hidden lg:flex">
                 {Navs}
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end space-x-2">
                 <Toogle></Toogle>
                 {
                     user?.email ? <div className="dropdown dropdown-end">
@@ -59,10 +59,15 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                        :
-                        <Link to='/login'>
-                            <button className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Login</button>
-                        </Link>
+                        : <div className="space-x-2">
+                            <Link to='/login'>
+                                <button className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Login</button>
+                            </Link>
+                            <Link to='/register'>
+                                <button className="btn btn-outline border border-[#a86a60] hover:bg-[#a86a60] hover:outline-none hover:text-white text-[#a86a60]">Register</button>
+                            </Link>
+                        </div>
+
                 }
 
             </div>

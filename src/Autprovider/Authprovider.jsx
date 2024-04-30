@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/Firebase.config";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { toast } from "react-toastify";
 
 
 export const AUthContext = createContext(null)
@@ -23,6 +24,7 @@ const Authprovider = ({ children }) => {
 
     const logout = () => {
         setUser(null)
+        toast.success("Logout successful!");
         return signOut(auth)
     }
 

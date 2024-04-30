@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg from "../assets/Animated Shape.svg"
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
@@ -15,6 +15,10 @@ import Swal from 'sweetalert2'
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const { signInUser } = useContext(AUthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location?.state || '/'
     const backgroundStyle = {
         backgroundImage: `url(${bg})`,
         backgroundRepeat: 'no-repeat',
@@ -41,8 +45,22 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 console.log(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Log in successful',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                if (result.user) {
+                    navigate(from)
+                }
             }).catch(error => {
-                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Log in failed',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             })
     }
     return (
