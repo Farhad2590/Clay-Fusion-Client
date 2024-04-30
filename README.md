@@ -1,6 +1,7 @@
 # ClayFusion: Discover and Share Ceramics and Pottery Creations
+-Live Link
+[ClayFusion](https://b9-a10-client-side.web.app)
 
-Live Site: [ClayFusion](#https://b9-a10-client-side.web.app)
 
 ## Features
 
