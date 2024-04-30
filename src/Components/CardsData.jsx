@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const CardsData = ({ Cards }) => {
     console.log(Cards);
     const { _id, image, item_name, subcategory_name, description, price, rating, customization, processing_time, stock_status } = Cards
     return (
-        <div className="max-h-xs rounded-md shadow-md bg-white" >
+        <div data-aos="fade-right" className="max-h-xs rounded-md shadow-md bg-white" >
             <img src={image} alt="" className="object-cover object-center w-full rounded-t-md h-72 " />
             <div className="flex flex-col justify-between p-6 space-y-8 " >
                 <div className="space-y-2">

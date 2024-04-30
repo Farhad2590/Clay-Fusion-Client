@@ -45,7 +45,7 @@ const Register = () => {
                 console.log(result);
                 Swal.fire({
                     icon: 'success',
-                    title: 'Log in successful',
+                    title: 'Registration successful',
                     showConfirmButton: false,
                     timer: 1500,
                 });
@@ -56,7 +56,7 @@ const Register = () => {
                 console.error(error);
                 Swal.fire({
                     icon: 'error',
-                    title: 'Log in failed',
+                    title: 'Registration in failed',
                     showConfirmButton: false,
                     timer: 1500,
                 });

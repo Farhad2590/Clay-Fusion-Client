@@ -2,6 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { AUthContext } from "../Autprovider/Authprovider";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
 
 const MyCard = () => {
     const { user } = useContext(AUthContext);
@@ -69,7 +74,7 @@ const MyCard = () => {
             <h1 className="text-3xl text-center text-[#a86a60] py-5">My Products</h1>
             <div className="border border-dashed border-[#a86a60] mb-5"></div>
             <div className=" text-lg text-center mb-5">
-                <details className="dropdown">
+                <details className="dropdown text-[#a86a60]">
                     <summary className="m-1 btn">Categories</summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                         <li onClick={() => handleCategoriesFilter('all')}><a>All</a></li>
@@ -82,7 +87,7 @@ const MyCard = () => {
             <div className="mx-auto w-[96%] pb-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {displayItems.map(item => (
-                        <div key={item._id} className="max-h-xs rounded-md shadow-md bg-white" >
+                        <div data-aos="fade-right" key={item._id} className="max-h-xs rounded-md shadow-md bg-white" >
                             <img src={item.image} alt="" className="object-cover object-center w-full rounded-t-md h-72 " />
                             <div className="flex flex-col justify-between p-6 space-y-8 " >
                                 <div className="space-y-2">

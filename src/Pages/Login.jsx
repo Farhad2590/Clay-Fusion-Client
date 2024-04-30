@@ -80,7 +80,7 @@ const Login = () => {
                             </div>
                             <div className="text-lg relative">
                                 <label htmlFor="password" className="block text-[#a86a60]">Password</label>
-                                <input type={showPassword ? "text" : "password"}type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" className="text-black w-full px-4 py-3 rounded-md "
+                                <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" className="text-black w-full px-4 py-3 rounded-md "
                                     {...register("password", { required: true })} />
                                 {errors.password && <span className='text-red-600 font-bold'>!!!Password is required!!!</span>}
                                 <span className="absolute top-11 right-3" onClick={() => setShowPassword(!showPassword)}>
